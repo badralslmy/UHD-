@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الفيلم</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="movies-details.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">UHDplus</div>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="movies.html">الأفلام</a></li>
+                <li><a href="series.html">المسلسلات</a></li>
+                <li><a href="dashboard/dashboard.html">الإعدادات</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Banner Section -->
+        <section class="banner">
+            <div class="banner-poster" id="bannerPoster"></div>
+            <div class="banner-overlay"></div>
+        </section>
+
+        <!-- Movie Details -->
+        <section class="details">
+            <div class="content-wrapper">
+                <div class="vertical-poster" id="verticalPoster"></div>
+                <div class="info">
+                    <h1 id="movieTitle"></h1>
+                    <p id="movieDescription"></p>
+                    <div class="meta-info">
+                        <span id="movieYear"></span>
+                        <span id="movieRating"></span>
+                        <span id="movieCategories"></span>
+                    </div>
+                    <!-- زر المشاهدة -->
+                    <button class="watch-button" id="watchButton">مشاهدة الفيلم</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Works and Suggestions -->
+        <section class="related-suggestions">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="suggestions">اقتراحات</button>
+                <button class="tab-button" data-tab="relatedWorks">اعمال متعلقة</button>
+            </div>
+            <div class="grid-container" id="relatedWorks"></div>
+            <div class="grid-container" id="suggestions"></div>
+        </section>
+    </main>
+
+    <script src="movies-details.js"></script>
+</body>
+</html>

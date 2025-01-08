@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - لوحة التحكم</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-film"></i>
+            <span>UHDplus</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="add.html" class="nav-item">
+                <i class="fas fa-plus"></i>
+                <span>إضافة محتوى</span>
+            </a>
+            <a href="categories.html" class="nav-item">
+                <i class="fas fa-folder"></i>
+                <span>إدارة الأقسام</span>
+            </a>
+            <a href="tmdb.html" class="nav-item">
+                <i class="fas fa-film"></i>
+                <span>إضافة من TMDB</span>
+            </a>
+            <a href="edit.html" class="nav-item">
+                <i class="fas fa-edit"></i>
+                <span>المحتوى المضاف</span>
+            </a>
+            <a href="filest.html" class="nav-item">
+                <i class="fas fa-database"></i>
+                <span>مخزن الملفات</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- الشريط العلوي -->
+        <header class="main-header">
+            <h1>لوحة التحكم</h1>
+            <div class="header-actions">
+                <a href="../index.html" class="header-btn">
+                    <i class="fas fa-home"></i>
+                    <span>العودة الى الموقع</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- إحصائيات المحتوى -->
+        <section class="stats-section">
+            <h2>إحصائيات المحتوى</h2>
+            <div class="stats-grid">
+                <a href="edit.html?type=movie" class="stat-card">
+                    <i class="fas fa-film"></i>
+                    <span class="stat-title">عدد الأفلام المضاف</span>
+                    <span class="stat-value" id="totalMovies">0</span>
+                </a>
+                <a href="edit.html?type=series" class="stat-card">
+                    <i class="fas fa-tv"></i>
+                    <span class="stat-title">عدد المسلسلات المضاف</span>
+                    <span class="stat-value" id="totalSeries">0</span>
+                </a>
+              
+                <a href="categories.html" class="stat-card">
+                    <i class="fas fa-folder"></i>
+                    <span class="stat-title">عدد أقسام الموقع</span>
+                    <span class="stat-value" id="totalCategories">0</span>
+                </a>
+                <a href="added-content.html?sort=views" class="stat-card">
+                    <i class="fas fa-eye"></i>
+                    <span class="stat-title">أكثر فيلم تمت مشاهدته</span>
+                    <span class="stat-value" id="mostWatchedMovie">-</span>
+                </a>
+                <a href="added-content.html?sort=views" class="stat-card">
+                    <i class="fas fa-eye"></i>
+                    <span class="stat-title">أكثر مسلسل تمت مشاهدته</span>
+                    <span class="stat-value" id="mostWatchedSeries">-</span>
+                </a>
+                <a href="added-content.html?sort=views" class="stat-card">
+                    <i class="fas fa-eye"></i>
+                    <span class="stat-title">أكثر أنمي تمت مشاهدته</span>
+                    <span class="stat-value" id="mostWatchedAnime">-</span>
+                </a>
+            </div>
+        </section>
+    </main>
+<script src="dashboard.js"></script>
+</body>
+</html>

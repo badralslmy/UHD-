@@ -1,0 +1,215 @@
+/* تنسيقات عامة */
+:root {
+    --primary-color: #8B0000;
+    --secondary-color: #111111;
+    --accent-color: #ff3333;
+    --text-color: #ffffff;
+    --card-bg: #1a1a1a;
+    --input-bg: #2a2a2a;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --header-bg: rgba(0, 0, 0, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+/* الهيدر */
+.main-header {
+    background: var(--header-bg);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header h1 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.header-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 51, 51, 0.3);
+}
+
+/* المحتوى الرئيسي */
+.main-content {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* شريط البحث */
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-bar input {
+    padding: 0.8rem;
+    background: var(--input-bg);
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-bar input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* قائمة المحتوى */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.content-item {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.content-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.content-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+.content-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.content-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.edit-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+    background: var(--primary-color);
+    color: white;
+}
+
+.edit-btn:hover {
+    opacity: 0.9;
+}
+
+/* نافذة التفاصيل المنبثقة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 50%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close {
+    color: var(--text-color);
+    float: left; /* تغيير الموضع لليسار */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--accent-color);
+}
+
+.modal-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+#translateButton {
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#translateButton:hover {
+    opacity: 0.9;
+}

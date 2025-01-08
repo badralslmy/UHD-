@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأفلام المنشورة</title>
+    <link rel="stylesheet" href="publish.css"> <!-- ملف CSS منفصل -->
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>الأفلام المنشورة</h1>
+            <div class="header-actions">
+                <a href="edit.html" class="header-btn">
+                    <i class="fas fa-arrow-left"></i> العودة إلى التعديل
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="ابحث عن فيلم...">
+        </div>
+
+        <div id="contentGrid" class="content-grid">
+            <!-- الأفلام المنشورة ستظهر هنا -->
+        </div>
+    </main>
+
+    <!-- نافذة التفاصيل المنبثقة -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalPoster" src="" alt="Poster" class="modal-poster">
+            <p><strong>الوصف:</strong> <span id="modalDescription"></span></p>
+            <p><strong>الحالة:</strong> <span id="modalStatus"></span></p>
+            <p><strong>تاريخ النشر:</strong> <span id="modalPublishDate"></span></p>
+            <p><strong>رابط الفيديو:</strong> <span id="modalVideoUrl"></span></p>
+            <p><strong>رابط الترجمة:</strong> <span id="modalSubtitleUrl"></span></p>
+            <button id="translateButton">الترجمة</button>
+        </div>
+    </div>
+
+    <script src="publish.js"></script> <!-- ملف JavaScript منفصل -->
+</body>
+</html>

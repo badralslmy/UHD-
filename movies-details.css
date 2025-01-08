@@ -1,0 +1,197 @@
+/* General Styles */
+body {
+    background-color: #000000; /* لون الخلفية أسود */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    height: 80vh; /* ارتفاع كبير للبنر */
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.banner-poster {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0; /* بدء الظل من الأسفل */
+    left: 0;
+    width: 100%;
+    height: 0; /* الظل مخفي في البداية */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0)); /* ظل متدرج من الأسفل */
+    transition: height 0.5s ease; /* إضافة تحريك للظل */
+}
+
+/* Movie Details */
+.details {
+    padding: 0; /* إزالة الهوامش نهائياً */
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: right;
+    position: absolute; /* تغيير إلى absolute */
+    bottom: 70px; /* رفع التفاصيل 70 بكسل من الأسفل */
+    left: 0;
+    right: 0;
+    z-index: 2; /* فوق الظل */
+    opacity: 0; /* مخفي في البداية */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* إضافة تحريك للتفاصيل */
+    transform: translateY(100%); /* بدء التفاصيل من أسفل البنر */
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    max-height: 75vh; /* لا تتجاوز 40% من ارتفاع البنر */
+    overflow: hidden;
+    margin: 0 2rem; /* هامش جانبي */
+}
+
+.vertical-poster {
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0; /* مخفي في البداية */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* إضافة تحريك للبوستر */
+    transform: translateY(100%); /* بدء البوستر من أسفل البنر */
+}
+
+.info {
+    flex: 1;
+}
+
+.info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.meta-info {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.meta-info span {
+    background: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+/* Watch Button */
+.watch-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 15px; /* حواف منحنية */
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.watch-button:hover {
+    background-color: #ff5722; /* لون مختلف عند التحويم */
+}
+
+/* Related Works and Suggestions */
+.related-suggestions {
+    padding: 2rem;
+    margin-top: 2rem;
+    opacity: 0; /* إخفاء القسم بشكل افتراضي */
+    transform: translateY(50px); /* تحريك القسم لأسفل قليلاً */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* إضافة أنيميشن */
+}
+
+.related-suggestions.visible {
+    opacity: 1; /* إظهار القسم */
+    transform: translateY(0); /* إعادة القسم إلى مكانه الأصلي */
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    background-color: transparent;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+    background-color: var(--accent-color);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 أعمدة */
+    gap: 1rem;
+}
+
+#suggestions {
+    display: grid; /* عرض القسم بشكل افتراضي */
+}
+
+#relatedWorks {
+    display: none; /* إخفاء القسم الآخر */
+}
+
+.movie-item {
+    text-align: center;
+    cursor: pointer; /* تغيير المؤشر إلى يد للإشارة إلى أنه قابل للنقر */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* إضافة تأثير تحويم */
+}
+
+.movie-item:hover {
+    transform: scale(1.05); /* تكبير البوستر عند التحويم */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+}
+
+.movie-item img {
+    width: 100%;
+    height: 300px; /* ارتفاع مناسب للبوستر الطولي */
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Scroll Effect */
+body.scrolled .banner-overlay {
+    height: 100%; /* الظل يظهر بالكامل عند التمرير */
+}
+
+body.scrolled .vertical-poster {
+    opacity: 1; /* إظهار البوستر العمودي */
+    transform: translateY(0); /* تحريك البوستر إلى مكانه الأصلي */
+}
+
+body.scrolled .details {
+    opacity: 1; /* إظهار التفاصيل */
+    transform: translateY(0); /* تحريك التفاصيل إلى مكانها الأصلي */
+}

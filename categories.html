@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - إدارة الأقسام والتصنيفات</title>
+    <link rel="stylesheet" href="categories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- إضافة مكتبة UUID عبر CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuid.min.js"></script>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1>UHDplus - إدارة الأقسام والتصنيفات</h1>
+            <div class="header-actions">
+                <a href="dashboard.html" class="header-btn">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <h2>إدارة الأقسام والتصنيفات</h2>
+
+        <!-- حقل البحث والفلترة -->
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="بحث...">
+            <select id="filterSelect">
+                <option value="all">الكل</option>
+                <option value="section">الأقسام</option>
+                <option value="category">التصنيفات</option>
+            </select>
+            <button class="add-section-btn" onclick="openAddSectionModal()"><i class="fas fa-plus"></i> إضافة قسم</button>
+            <button class="add-category-btn" onclick="openAddCategoryModal()"><i class="fas fa-plus"></i> إضافة تصنيف</button>
+        </div>
+
+        <!-- عرض الأقسام والتصنيفات -->
+        <div class="items-grid" id="itemsGrid">
+            <!-- الأقسام والتصنيفات ستتم إضافتها هنا ديناميكيًا -->
+        </div>
+
+        <!-- نموذج إضافة قسم -->
+        <div id="addSectionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddSectionModal()">&times;</span>
+                <h3>إضافة قسم جديد</h3>
+                <form id="sectionForm">
+                    <div class="form-group">
+                        <label for="sectionName">اسم القسم</label>
+                        <input type="text" id="sectionName" required>
+                    </div>
+                    <button type="submit" class="submit-btn">إضافة قسم</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- نموذج إضافة تصنيف -->
+        <div id="addCategoryModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddCategoryModal()">&times;</span>
+                <h3>إضافة تصنيف جديد</h3>
+                <form id="categoryForm">
+                    <div class="form-group">
+                        <label for="categoryName">اسم التصنيف</label>
+                        <input type="text" id="categoryName" required>
+                    </div>
+                    <button type="submit" class="submit-btn">إضافة تصنيف</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="categories.js"></script>
+</body>
+</html>

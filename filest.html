@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - مخزن الملفات</title>
+    <link rel="stylesheet" href="filest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1>UHDplus - مخزن الملفات</h1>
+            <div class="header-actions">
+                <a href="dashboard.html" class="header-btn">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <h2>مخزن الملفات</h2>
+
+        <!-- شريط البحث والفلترة -->
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="ابحث بالرقم أو الاسم..." style="width: 200px;">
+            <button id="filterMovies">الأفلام</button>
+            <button id="filterSeries">المسلسلات</button>
+            <button id="filterMissingFiles">إظهار الأعمال غير المكتملة</button>
+        </div>
+
+        <!-- جدول الملفات -->
+        <table class="files-table" id="filesTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>اسم العمل</th>
+                    <th>رابط الفيديو</th>
+                    <th>الإرفاقات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- الملفات ستتم إضافتها هنا ديناميكيًا -->
+            </tbody>
+        </table>
+    </main>
+
+    <!-- قائمة منبثقة لإرفاق الحلقات -->
+    <div id="episodePopup" class="popup">
+        <div class="popup-content">
+            <h3 id="popupTitle"></h3>
+            <div id="episodeList"></div>
+            <button id="closePopup">إغلاق</button>
+        </div>
+    </div>
+
+    <script src="filest.js"></script>
+    <script src="dashboars.js"></script>
+</body>
+</html>

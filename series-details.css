@@ -1,0 +1,227 @@
+/* General Styles */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.banner-poster {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+    transition: height 0.5s ease;
+}
+
+/* Series Details */
+.details {
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: right;
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(100%);
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    max-height: 40vh;
+    overflow: hidden;
+    margin: 0 2rem;
+}
+
+.vertical-poster {
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(100%);
+}
+
+.info {
+    flex: 1;
+}
+
+.info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.meta-info {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.meta-info span {
+    background: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+/* Related Works and Suggestions */
+.related-suggestions {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    background-color: transparent;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+    background-color: var(--accent-color);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.movie-item {
+    text-align: center;
+    cursor: pointer; /* تغيير المؤشر إلى شكل يد للإشارة إلى أنه قابل للنقر */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* إضافة تأثير تحويم */
+}
+
+.movie-item:hover {
+    transform: scale(1.05); /* تكبير البوستر عند التحويم */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+}
+
+.movie-item img {
+    width: 100%; /* عرض كامل */
+    height: 300px; /* ارتفاع مناسب للبوستر الطولي */
+    border-radius: 10px;
+    object-fit: cover; /* تأكد أن الصورة تملأ المساحة المحددة */
+}
+
+/* Seasons and Episodes */
+.seasons-container {
+    display: none;
+    padding: 1rem;
+    width: 100%; /* توسيع العرض ليشمل الصفحة */
+}
+
+#seasonDropdown {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+
+.episodes {
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* الفاصل بين الحلقات */
+}
+
+.episode {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: transparent;
+    border-bottom: 2px solid #666 ; /* خط رمادي يفصل بين الحلقات */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.episode:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* تأثير التحويم */
+}
+
+.episode img {
+    width: 150px; /* حجم صورة البوستر الأفقي */
+    height: 80px; /* ارتفاع مناسب */
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.episode h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #fff;
+}
+
+.episode span {
+    font-size: 1rem;
+    color: #ccc;
+    margin-right: 10px; /* مسافة بين رقم الحلقة واسمها */
+}
+
+/* Scroll Effect */
+body.scrolled .banner-overlay {
+    height: 80%;
+}
+
+body.scrolled .vertical-poster {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.scrolled .details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bold-text {
+    font-weight: bold; /* جعل النص عريضًا */
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشغل الفيديو</title>
+    <style>
+        /* إزالة الهوامش والحواف */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* منع التمرير */
+            background-color: #000;
+        }
+
+        /* جعل المشغل يأخذ المساحة الكاملة */
+        #videoPlayer {
+            position: fixed; /* تغيير من absolute إلى fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none; /* إزالة الحدود */
+        }
+
+        /* رسائل الخطأ */
+        .error-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #ff4444;
+            text-align: center;
+            z-index: 10; /* فوق المشغل */
+        }
+
+        /* زر الرجوع */
+        #backButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 10px; /* حواف دائرية */
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100; /* فوق كل العناصر */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="videoPlayer"></div>
+    <div id="errorMessage" class="error-message"></div>
+    <div id="backButton">&#10005;</div> <!-- علامة X -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const contentId = urlParams.get('id');
+            const type = urlParams.get('type'); // 'movie' أو 'episode'
+
+            if (contentId && type) {
+                loadVideo(contentId, type);
+            } else {
+                showError('لم يتم العثور على معرف الفيديو!');
+            }
+
+            // إضافة وظيفة الرجوع عند النقر على الزر
+            document.getElementById('backButton').addEventListener('click', () => {
+                window.history.back(); // الرجوع إلى الصفحة السابقة
+            });
+        });
+
+        const loadVideo = async (id, type) => {
+            const db = await openDB();
+            const transaction = db.transaction('content', 'readonly');
+            const store = transaction.objectStore('content');
+            const request = store.get(parseInt(id));
+
+            request.onsuccess = () => {
+                const content = request.result;
+                if (content) {
+                    let videoUrl = '';
+
+                    if (type === 'movie') {
+                        videoUrl = content.videoUrl;
+                    } else if (type === 'episode') {
+                        const seasonNumber = parseInt(urlParams.get('season'));
+                        const episodeNumber = parseInt(urlParams.get('episode'));
+                        videoUrl = content.seasons[seasonNumber - 1].episodes[episodeNumber - 1].videoUrl;
+                    }
+
+                    const luluvdoId = extractLuluvdoId(videoUrl);
+
+                    if (luluvdoId) {
+                        console.log('رابط الفيديو:', `https://luluvdo.com/e/${luluvdoId}`);
+                        document.getElementById('videoPlayer').innerHTML = `
+                            <iframe 
+                                src="https://luluvdo.com/e/${luluvdoId}" 
+                                scrolling="no" 
+                                frameborder="0" 
+                                allowfullscreen="true" 
+                                webkitallowfullscreen="true" 
+                                mozallowfullscreen="true"
+                                style="width: 100%; height: 100%;"
+                            ></iframe>
+                        `;
+                    } else {
+                        showError('رابط الفيديو غير صالح!');
+                    }
+                } else {
+                    showError('لم يتم العثور على الفيديو!');
+                }
+            };
+
+            request.onerror = () => {
+                showError('حدث خطأ أثناء جلب بيانات الفيديو.');
+            };
+        };
+
+        const extractLuluvdoId = (url) => {
+            // إزالة أي query parameters من الرابط
+            const cleanedUrl = url.split('?')[0];
+
+            // التعامل مع روابط Luluvdo
+            if (cleanedUrl.includes('luluvdo.com/e/')) {
+                const match = cleanedUrl.match(/luluvdo\.com\/e\/([a-zA-Z0-9]+)/);
+                return match ? match[1] : null;
+            }
+
+            // إذا لم يتطابق الرابط مع أي من الأنماط السابقة
+            return null;
+        };
+
+        const showError = (message) => {
+            document.getElementById('errorMessage').textContent = message;
+        };
+
+        const openDB = () => {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('ContentDatabase', 16);
+
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        };
+    </script>
+</body>
+</html>

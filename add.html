@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - إضافة محتوى</title>
+    <link rel="stylesheet" href="add.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1>UHDplus - إضافة محتوى</h1>
+            <div class="header-actions">
+                <a href="dashboard.html" class="header-btn">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <h2>إضافة محتوى جديد</h2>
+        <form id="contentForm">
+            <div class="form-group">
+                <label for="title">اسم العمل</label>
+                <input type="text" id="title" required>
+            </div>
+
+            <div class="form-group">
+                <label>نوع العمل</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="type" value="movie" checked>
+                        فيلم
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="series">
+                        مسلسل
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="anime">
+                        أنمي
+                    </label>
+                </div>
+            </div>
+
+            <!-- إدارة المواسم والحلقات (للمسلسلات والأنمي) -->
+            <div class="form-group" id="seasonGroup" style="display: none;">
+                <label>إدارة المواسم والحلقات</label>
+                <div id="seasonsContainer">
+                    <!-- سيتم إضافة المواسم هنا ديناميكيًا -->
+                </div>
+                <button type="button" class="addSeasonBtn">+ إضافة موسم</button>
+            </div>
+
+            <!-- التصنيفات -->
+            <div class="form-group">
+                <label>التصنيفات</label>
+                <div class="categories-dropdown">
+                    <select id="categoriesSelect" multiple>
+                        <!-- التصنيفات ستتم إضافتها هنا ديناميكيًا -->
+                    </select>
+                    <div class="add-category">
+                        <input type="text" id="newCategory" placeholder="إضافة تصنيف جديد">
+                        <button type="button" id="addCategoryBtn">+ إضافة تصنيف</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">الوصف</label>
+                <textarea id="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="year">سنة الإنتاج</label>
+                <input type="number" id="year" min="1900" max="2024" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rating">التقييم</label>
+                <input type="number" id="rating" min="0" max="10" step="0.1" required>
+            </div>
+
+            <!-- إضافة بوسترين -->
+            <div class="form-group">
+                <label for="posterPortrait">بوستر عمودي (بالطول)</label>
+                <input type="file" id="posterPortrait" accept="image/*" required>
+                <div id="posterPortraitPreview" class="poster-preview"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="posterLandscape">بوستر أفقي (بالعرض)</label>
+                <input type="file" id="posterLandscape" accept="image/*" required>
+                <div id="posterLandscapePreview" class="poster-preview"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">إضافة المحتوى</button>
+        </form>
+    </main>
+
+    <script src="add.js"></script>
+</body>
+</html>

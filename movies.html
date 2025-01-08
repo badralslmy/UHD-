@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - الأفلام</title>
+    <link rel="stylesheet" href="media.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">UHDplus</div>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="movies.html" class="active">الأفلام</a></li>
+                <li><a href="series.html">المسلسلات</a></li>
+                <li><a href="dashboard/dashboard.html">الإعدادات</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Search and Filter Section -->
+        <section class="search-filter">
+            <div class="search-bar">
+                <input type="text" placeholder="ابحث عن فيلم...">
+                <button class="search-btn">بحث</button>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label>التصنيف:</label>
+                    <select class="category-filter">
+                        <option value="all">الكل</option>
+                        <option value="action">أكشن</option>
+                        <option value="action">أنمي</option>
+                        <option value="drama">دراما</option>
+                        <option value="comedy">كوميدي</option>
+                        <option value="horror">رعب</option>
+                        <option value="romance">رومانسي</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>السنة:</label>
+                    <select class="year-filter">
+                        <option value="all">الكل</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>التقييم:</label>
+                    <select class="rating-filter">
+                        <option value="all">الكل</option>
+                        <option value="5">5 نجوم</option>
+                        <option value="4">4 نجوم وأعلى</option>
+                        <option value="3">3 نجوم وأعلى</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Movies Grid -->
+        <section class="media-grid">
+            <!-- Movies will be added dynamically -->
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="prev-page">السابق</button>
+            <div class="page-numbers">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+            <button class="next-page">التالي</button>
+        </div>
+    </main>
+
+    <script src="movies.js"></script>
+</body>
+</html>

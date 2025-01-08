@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - إضافة من TMDB</title>
+    <link rel="stylesheet" href="tmdb.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">UHDplus Admin</div>
+            <a href="dashboard.html" class="website-btn">العودة</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>إضافة محتوى من TMDB</h2>
+        <div class="search-bar">
+            <input type="text" id="tmdbSearchInput" placeholder="ابحث عن فيلم أو مسلسل...">
+            <button id="tmdbSearchBtn">بحث</button>
+        </div>
+        <div class="tmdb-results" id="tmdbResults">
+            <!-- نتائج البحث من TMDB سيتم عرضها هنا -->
+        </div>
+<div id="contentGrid"></div>
+<div id="notification" class="notification"></div>
+    </main>
+
+    <script src="tmdb.js"></script>
+    <script src="dashboars.js"></script>
+</body>
+</html>

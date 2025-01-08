@@ -1,0 +1,391 @@
+:root {
+    --primary-color: #8B0000;
+    --secondary-color: #111111;
+    --accent-color: #9B2020; /* تم التعديل هنا */
+    --text-color: #ffffff;
+    --card-bg: #1a1a1a;
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* Header Styles */
+header {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 5rem;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Banner Slider */
+.banner-slider {
+    position: relative;
+    height: 600px;
+    margin-bottom: 3rem;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-overlay);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 4rem;
+    right: 4rem;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.slide-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.slide-content .categories {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.slide-content .category-tag {
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.slide-content .content-rating {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.watch-btn {
+    background: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.watch-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.watch-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(155, 32, 32, 0.4);
+    background-color: #7a1a1a;
+}
+
+.watch-btn:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Movies Section */
+.movies-section {
+    margin: 4rem 0;
+}
+
+.movies-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-right: 1rem;
+}
+
+.movies-section h2::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 1.5em;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.movies-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--secondary-color);
+}
+
+.movies-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.movies-grid::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+.movies-grid::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+.movie-card {
+    flex: 0 0 auto;
+    width: 220px;
+    height: 330px;
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.movie-card:hover img {
+    transform: scale(1.05);
+}
+
+.movie-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; /* ظل في الجزء السفلي */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.movie-card h3 {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center; /* تم التعديل هنا */
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* ظل للنص */
+    padding: 0 1rem; /* إضافة padding لتجنب التصاق النص بالحواف */
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to top, var(--secondary-color), transparent);
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #999;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .slide-content {
+        right: 2rem;
+        max-width: 500px;
+    }
+
+    .slide-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+
+    .banner-slider {
+        height: 400px;
+    }
+
+    .slide-content {
+        right: 1rem;
+        left: 1rem;
+        bottom: 2rem;
+        text-align: center;
+    }
+
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+
+    .movie-card {
+        width: 180px; /* تصغير عرض البطاقات في الشاشات الصغيرة */
+        height: 240px; /* تصغير ارتفاع البطاقات في الشاشات الصغيرة */
+    }
+
+    .movie-card h3 {
+        font-size: 1rem; /* تصغير حجم النص في الشاشات الصغيرة */
+        bottom: 0.5rem;
+        padding: 0 0.5rem; /* تصغير padding في الشاشات الصغيرة */
+    }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHDplus - المحتوى المضاف</title>
+    <link rel="stylesheet" href="edit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1>UHDplus - المحتوى المضاف</h1>
+            <div class="header-actions">
+                <a href="dashboard.html" class="header-btn">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="add.html" class="header-btn">
+                    <i class="fas fa-plus"></i>
+                    <span>إضافة محتوى</span>
+                </a>
+                <a href="tmdb.html" class="header-btn">
+                    <i class="fas fa-plus"></i>
+                    <span>TMDB</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- شريط الفلترة والبحث -->
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="ابحث باسم العمل...">
+            <select id="typeFilter">
+                <option value="all">كل الأنواع</option>
+                <option value="movie">أفلام</option>
+                <option value="series">مسلسلات</option>
+            </select>
+            <select id="completionFilter">
+                <option value="all">الاكتمال</option>
+                <option value="مكتمل">مكتمل</option>
+                <option value="غير مكتمل">غير مكتمل</option>
+                <option value="مكتمل جزئيا">مكتمل جزئيا</option>
+            </select>
+            <select id="statusFilter">
+                <option value="all">كل الحالات</option>
+                <option value="تم نشره">تم نشره</option>
+                <option value="لم يتم نشره">لم يتم نشره</option>
+                <option value="معلق">معلق</option>
+                <option value="مرفوض">مرفوض</option>
+            </select>
+        </div>
+
+        <!-- قائمة المحتوى -->
+        <div class="content-grid" id="contentGrid">
+            <!-- المحتوى سيتم إضافته هنا ديناميكيًا -->
+        </div>
+    </main>
+
+    <!-- نافذة التعديل المنبثقة -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>تعديل المحتوى</h2>
+            <form id="editForm">
+                <label for="editTitle">العنوان:</label>
+                <input type="text" id="editTitle" name="editTitle">
+
+                <label for="editDescription">الوصف:</label>
+                <textarea id="editDescription" name="editDescription" rows="4"></textarea>
+
+                <label for="editRating">التقييم:</label>
+                <input type="number" id="editRating" name="editRating" step="0.1" min="0" max="10">
+
+                <label for="editYear">السنة:</label>
+                <input type="number" id="editYear" name="editYear">
+
+                <label for="editPosterPortrait">بوستر عمودي:</label>
+                <input type="file" id="editPosterPortrait" name="editPosterPortrait" accept="image/*">
+
+                <label for="editPosterLandscape">بوستر أفقي:</label>
+                <input type="file" id="editPosterLandscape" name="editPosterLandscape" accept="image/*">
+
+                <div id="seasonsContainer" style="display: none;">
+                    <h3>المواسم</h3>
+                    <div id="seasonsList"></div>
+                    <button type="button" onclick="addSeason()">إضافة موسم</button>
+                </div>
+
+                <button type="submit">حفظ التعديلات</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="edit.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المسلسل</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="series-details.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">UHDplus</div>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="movies.html">الأفلام</a></li>
+                <li><a href="series.html">المسلسلات</a></li>
+                <li><a href="dashboard/dashboard.html">الإعدادات</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Banner Section -->
+        <section class="banner">
+            <div class="banner-poster" id="bannerPoster"></div>
+            <div class="banner-overlay"></div>
+        </section>
+
+        <!-- Series Details -->
+        <section class="details">
+            <div class="content-wrapper">
+                <div class="vertical-poster" id="verticalPoster"></div>
+                <div class="info">
+                    <h1 id="seriesTitle"></h1>
+                    <p id="seriesDescription"></p>
+                    <div class="meta-info">
+                        <span id="seriesYear"></span>
+                        <span id="seriesRating"></span>
+                        <span id="seriesCategories"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Works and Suggestions -->
+        <section class="related-suggestions">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="seasons">المواسم</button>
+                <button class="tab-button" data-tab="suggestions">اقتراحات</button>
+                <button class="tab-button" data-tab="relatedWorks">اعمال متعلقة</button>
+            </div>
+            <div class="grid-container" id="relatedWorks"></div>
+            <div class="grid-container" id="suggestions" style="display: none;"></div>
+            <div class="seasons-container" id="seasonsContainer" style="display: none;">
+                <!-- قائمة المواسم -->
+                <select id="seasonDropdown">
+                    <option value="">اختر الموسم</option>
+                </select>
+                <!-- عرض الحلقات -->
+                <div class="episodes" id="episodesContainer"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="series-details.js"></script>
+</body>
+</html>
